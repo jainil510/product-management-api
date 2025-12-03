@@ -44,4 +44,19 @@ public class ProductController {
         }
         return null;
     }
+    @PutMapping("/{id}")
+    public Product updateProduct(
+            @PathVariable int id,
+            @RequestBody Product updatedProduct) {
+
+        for (Product p : products) {
+            if (p.getId() == id) {
+                p.setName(updatedProduct.getName());
+                p.setPrice(updatedProduct.getPrice());
+                return p;
+            }
+        }
+        return null;
+    }
+
 }
