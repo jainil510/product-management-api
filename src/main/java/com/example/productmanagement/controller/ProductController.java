@@ -58,5 +58,18 @@ public class ProductController {
         }
         return null;
     }
+    @DeleteMapping("/{id}")
+    public String deleteProduct(@PathVariable int id) {
+
+        for (Product p : products) {
+            if (p.getId() == id) {
+                products.remove(p);
+                return "Product deleted successfully";
+            }
+        }
+
+        return "Product not found";
+    }
+
 
 }
